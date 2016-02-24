@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Vis is Back!</title>
+	<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<div class="container">
+	<div class="monies"></div>
+	<h1>Manipulate the monies</h1>
+    <table class="input-data" id="inputData">
+        <tr>
+            <td> <label for="dd">Direct Deposit</label><input type="number" name="dd" id="dd" value="845.97"> </td>
+            <td> <label for="checks">Checks</label><input type="number" name="checks" id="checks" value="234.50"> </td>
+            <td> <label for="cashback">Cash Back</label><input type="number" name="cashback" id="cashback" value="51.02"> </td>
+            <td>
+                <label for="moneyInTotal">Total Money In</label><input type="number" class="total" name="moneyInTotal" id="moneyInTotal" value="1131.49">
+            </td>
+        </tr>
+        <tr>
+            <td> <label for="groceries">Groceries</label><input type="number" name="groceries" id="groceries" value="689.23"> </td>
+            <td> <label for="restaurants">Restaurants</label><input type="number" name="restaurants" id="restaurants" value="412.89"> </td>
+            <td> <label for="entertainment">Entertainment</label><input type="number" name="entertainment" id="entertainment" value="401.43"> </td>
+            <td>
+                <label for="moneyOutTotal">Total Money Out</label><input type="number" class="total" name="moneyOutTotal" id="moneyOutTotal" value="1503.55">
+            </td>
+        </tr>
+        <tr>
+            <td><label for="">Transition Delay</label></label><input type="number" id="transDelay" value="1000"></td>
+            <td><label for="">Animation Delay</label></label><input type="number" id="animateDelay" value="500"></td>
+            <td><label for="">CornerRadius</label></label><input type="number" id="cornerRadius" value="5"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><button type="submit" id="get_main">Make a pretty circle</button></td>
+            <td><button type="submit" id="get_in">Make a pretty Money-In circle</button></td>
+            <td><button type="submit" id="get_out">Make a pretty Money-Out circle</button></td>
+        </tr>
+    </table>
+
+
+
+
+</div>
+
+<script type="text/javascript" src="main-old.js"></script>
+
+</body>
+</html>

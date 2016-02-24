@@ -1,0 +1,357 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+  height: 100%;
+}
+
+/** @FONT-FACE **/
+
+@font-face {
+    font-family: 'MuseoSans';
+    src: url('fonts/museo_sans_700/MuseoSans_700-webfont.eot');
+    src: url('fonts/museo_sans_700/MuseoSans_700-webfont.eot?iefix') format('eot'),
+         url('fonts/museo_sans_700/MuseoSans_700-webfont.woff') format('woff'),
+         url('fonts/museo_sans_700/MuseoSans_700-webfont.ttf') format('truetype'),
+         url('fonts/museo_sans_700/MuseoSans_700-webfont.svg#webfontm4EIOd5I') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MuseoSans';
+    src: url('fonts/museo_sans_500/MuseoSans_500-webfont.eot');
+    src: url('fonts/museo_sans_500/MuseoSans_500-webfont.eot?iefix') format('eot'),
+         url('fonts/museo_sans_500/MuseoSans_500-webfont.woff') format('woff'),
+         url('fonts/museo_sans_500/MuseoSans_500-webfont.ttf') format('truetype'),
+         url('fonts/museo_sans_500/MuseoSans_500-webfont.svg#webfontkQkWxTED') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MuseoSans';
+    src: url('fonts/museo_sans_300/MuseoSans_300-webfont.eot');
+    src: url('fonts/museo_sans_300/MuseoSans_300-webfont.eot?iefix') format('eot'),
+         url('fonts/museo_sans_300/MuseoSans_300-webfont.woff') format('woff'),
+         url('fonts/museo_sans_300/MuseoSans_300-webfont.ttf') format('truetype'),
+         url('fonts/museo_sans_300/MuseoSans_300-webfont.svg#webfontZrigUslT') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MuseoSansItalic';
+    src: url('fonts/museo_sans_700_ital/MuseoSans_700_Italic-webfont.eot');
+    src: url('fonts/museo_sans_700_ital/MuseoSans_700_Italic-webfont.eot?iefix') format('eot'),
+         url('fonts/museo_sans_700_ital/MuseoSans_700_Italic-webfont.woff') format('woff'),
+         url('fonts/museo_sans_700_ital/MuseoSans_700_Italic-webfont.ttf') format('truetype'),
+         url('fonts/museo_sans_500_ital/MuseoSans_700_Italic-webfont.svg#webfont00ubZW3A') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'MuseoSlab500';
+    src: url('fonts/museo_slab_500/Museo_Slab_500-webfont.eot');
+    src: url('fonts/museo_slab_500/Museo_Slab_500-webfont.eot?iefix') format('eot'),
+         url('fonts/museo_slab_500/Museo_Slab_500-webfont.woff') format('woff'),
+         url('fonts/museo_slab_500/Museo_Slab_500-webfont.ttf') format('truetype'),
+         url('fonts/museo_slab_500/Museo_Slab_500-webfont.svg#webfontyumMOUTD') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MuseoSlab300';
+    src: url('fonts/museo_slab_300/MuseoSlab_300-webfont.eot');
+    src: url('fonts/museo_slab_300/MuseoSlab_300-webfont.eot?iefix') format('eot'),
+         url('fonts/museo_slab_300/MuseoSlab_300-webfont.woff') format('woff'),
+         url('fonts/museo_slab_300/MuseoSlab_300-webfont.ttf') format('truetype'),
+         url('fonts/museo_slab_300/MuseoSlab_300-webfont.svg#webfontyumMOUTD') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'MuseoSlab500Italic';
+    src: url('fonts/museo_slab_500_ital/Museo_Slab_500italic-webfont.eot');
+    src: url('fonts/museo_slab_500_ital/Museo_Slab_500italic-webfont.eot?iefix') format('eot'),
+         url('fonts/museo_slab_500_ital/Museo_Slab_500italic-webfont.woff') format('woff'),
+         url('fonts/museo_slab_500_ital/Museo_Slab_500italic-webfont.ttf') format('truetype'),
+         url('fonts/museo_slab_500_ital/Museo_Slab_500italic-webfont.svg#webfont3dFIImcj') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MuseoSans';
+    src: url('fonts/museo_sans_300_ital/MuseoSans_300_Italic-webfont.eot');
+    src: url('fonts/museo_sans_300_ital/MuseoSans_300_Italic-webfont.eot?iefix') format('eot'),
+         url('fonts/museo_sans_300_ital/MuseoSans_300_Italic-webfont.woff') format('woff'),
+         url('fonts/museo_sans_300_ital/MuseoSans_300_Italic-webfont.ttf') format('truetype'),
+         url('fonts/museo_sans_300_ital/MuseoSans_300_Italic-webfont.svg#webfontYIppRmbR') format('svg');
+    font-weight: 300;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'MuseoSans';
+    src: url('fonts/museo_sans_500_ital/MuseoSans_500_Italic-webfont.eot');
+    src: url('fonts/museo_sans_500_ital/MuseoSans_500_Italic-webfont.eot?iefix') format('eot'),
+         url('fonts/museo_sans_500_ital/MuseoSans_500_Italic-webfont.woff') format('woff'),
+         url('fonts/museo_sans_500_ital/MuseoSans_500_Italic-webfont.ttf') format('truetype'),
+         url('fonts/museo_sans_500_ital/MuseoSans_500_Italic-webfont.svg#webfontprFOYbU7') format('svg');
+    font-weight: 500;
+    font-style: italic;
+}
+
+
+body {
+	margin: 0;
+	font-family: 'MuseoSans', sans-serif;
+	font-weight: 500;
+	color: #555;
+	font-size: 14px;
+	line-height: 24px;
+
+}
+
+a, a:hover {
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #1799bf;
+}
+
+.container {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.monies {
+	width: 100%;
+  float: left;
+  /*max-width: 200px;*/
+  margin: 50px auto;
+}
+
+.screen-box {
+  position: relative;
+  float: left;
+  width: 270px;
+  height: 480px;
+  margin: 20px;
+  border: solid 1px #eee;
+  background-image: url('dashboardbgbluroverlay_thumb.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.screen-bg {
+    background-image: url('dashboard.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+
+}
+
+.screen-bg.blur {
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+    opacity: 0.015;
+    -webkit-transition: all 1s ease;
+    transition: all 250ms ease;
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.chart-box {
+  width: 150px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.legend-box {
+  width: 205px;
+  margin: 0 auto;
+}
+
+.input-data td {
+  padding: 10px;
+}
+
+.input-data label, input {
+  display: block;
+}
+
+
+.input-data input {
+  padding: 7px;
+  font-size: 14px;
+}
+
+.input-data button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #86bc07;
+  color: #fff;
+  border: 0;
+}
+
+.cta-info {
+  width: 100%;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.cta-info span {
+  display: block;
+  font-size: 10px;
+  line-height: 12px;
+  color: #777;
+  font-weight: 700;
+}
+
+.cta-info a {
+  display:block;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #1799bf;
+}
+
+.legend-box {
+  position: relative;
+}
+
+.legend-box p {
+  position: relative;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 15px;
+  font-weight: 500;
+}
+
+.legend-box .label-amount {
+  position: absolute;
+  right: 0;
+}
+
+.legend-box .label-circle {
+  position: absolute;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+}
+
+.legend-full-box {
+  width: 220px;
+  margin: 0 auto;
+}
+
+.legend-full-box .in-total, .legend-full-box .out-total {
+  position: relative;
+  padding-left: 30px;
+  border-bottom: solid 1px #ddd;
+  padding-bottom: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15px;
+}
+
+.legend-full-box .box-in p.in-total::before, .legend-full-box .box-out p.out-total::before {
+  content: '';
+}
+
+.legend-full-box .in-total .label-circle, .legend-full-box .out-total .label-circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 5px 8px;
+  font-size: 14px;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  border-radius: 25px;
+  background-color: #86bc07;
+}
+
+.legend-full-box .out-total .label-circle {
+  padding: 5px 9px;
+  background-color: #CB4525;
+}
+
+.legend-full-box .in-total span, .legend-full-box .out-total span {
+  display: block;
+  color: #999;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.legend-full-box p {
+  margin: 9px 0;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 13px;
+}
+
+.legend-full-box .box-in p::before {
+  content: "+";
+  color: #86bc07;
+}
+
+.legend-full-box .box-out p::before {
+  content: "-";
+  color: #CB4525;
+}
+
+.legend-full-box .box-in {
+  float: left;
+  width: 48%;
+  padding: 0 5px;
+}
+
+.legend-full-box .box-out {
+  float: right;
+  width: 48%;
+  padding: 0 5px;
+}
+
+.legend-full-box .full-label {
+  display: block;
+  color: #999;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 18px 9px 16px 0;
+  border-top: solid 1px #eee;
+}
+
+.footer a {
+  display: block;
+  float: right;
+  margin: 0 15px;
+}
+
+.footer .footer-close {
+  font-size: 30px;
+  color: #bbb;
+  font-weight: 300;
+}
