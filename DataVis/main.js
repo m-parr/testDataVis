@@ -6,16 +6,19 @@
 
 // base chart
 var Chart = {
-    init: function(data) {
+    // initialize chart object with properties to be used throughout
+    init: function(data, prop) {
         this.data = data || null;
+        this.where = prop.where || "target-div";
+        this.whichChart = prop.whichChart || "dataIn";
         this.width = 100;
         this.height = 100;
 
     },
 
     // insert chart to specified div ("where is a class or id")
-    addChart: function(where) {
-        this.container = d3.select(where).append("div")
+    addChart: function() {
+        this.container = d3.select(this.where).append("div")
             .attr("class","screen");
 
         this.chartBox = this.container.append("div")
@@ -24,9 +27,11 @@ var Chart = {
 
     // create specific data objects for the various charts (total, moneyIn, moneyOut)
     // and set variable cases
-    refineData: function(data) {
+    // ***** THIS WILL CHANGE ONCE the data creation methods are set
+    // ***** determine if it should be handled prior to chart creation or as part of it
+    refineData: function(rawData) {
 
-        var objMoney = data[0],
+        var objMoney = rawData[0],
             valMoneyIn = objMoney.moneyInTotal;
             valMoneyOut = objMoney.moneyOutTotal,
             valMoneyTotal = valMoneyIn + valMoneyOut,
@@ -46,6 +51,8 @@ var Chart = {
         this.valDifference = valDifference;
         this.moreIn = moreIn;
         this.domPerc = domPerc;
+        this.valMoneyIn = valMoneyIn;
+        this.valMoneyOut = valMoneyOut;
 
         // set variable cases
         if (valMoneyIn < valMoneyOut) {
@@ -72,7 +79,8 @@ var Chart = {
             dataBlock.sort(compare);
         }
 
-        // create data arrays for charts
+        // create data arrays for types of charts
+        // (e.g. dataIn, dataOut, etc)
         this.dataIn = [
               { label: 'Cashback', count: valCB },
               { label: 'Checks', count: valChecks },
@@ -81,13 +89,14 @@ var Chart = {
 
         sortData(this.dataIn);
 
-        var dataOut = [
+        this.dataOut = [
               { label: 'Groceries', count: valGroc },
               { label: 'Restaurants', count: valRest },
               { label: 'Entertainment', count: valEnt }
             ];
 
-        this.dataOut = sortData(dataOut);
+        sortData(this.dataOut);
+
     },
 
     // build out center money text
@@ -98,7 +107,7 @@ var Chart = {
 
         // set dollar amount
         var textDollar = text.append("tspan")
-            .text("$" + this.valDifference)
+            .text("$" + this.valCircle)
             .attr("text-anchor", "start")
             .style("font-size",fontSize+'px')
             .attr("fill", "#333")
@@ -190,7 +199,7 @@ var Chart = {
         }
     },
 
-
+    // object to pull possible CTAs from
     ctaTextOptions: {
         "ctaText1" : {
             "message": "You're saving money, but not taking advantage!",
@@ -212,29 +221,44 @@ var Chart = {
 };
 
 
-
+// object for donut-specifc methods (delegate to Chart)
 var basicDonut = Object.create(Chart);
 
 // setup a basic chart with varibale input
-basicDonut.setup = function(data, whichChart) {
-    // delegated call to Chart
-    this.init(data);
+basicDonut.setup = function(data, prop) {
+    // delegate to Chart
+    this.init(data, prop);
+
+    // set variables (e.g. colors and some text
+    // dependent on which chart is set in build call
+    var whichChart = this.whichChart;
 
     if (whichChart == "moneyIn") {
         this.colorArr = ["#1799bf", "#507640", "#85bb08"];
+        this.valCircle = this.valMoneyIn;
         this.centerTextString = "Money In";
-    } else {
+    } else if (whichChart == "moneyOut") {
         this.colorArr = ["#1799bf", "#FF8200", "#CF4520"];
+        this.valCircle = this.valMoneyOut;
         this.centerTextString = "Money Out";
+    } else {
+        this.colorArr = ["#1799bf", "#137d9c", "#094050"];
+        this.valCircle = "$$$";
+        this.centerTextString = "Specify Type";
     }
 
 };
 
 // build the basic chart
-basicDonut.build = function(where) {
-    //delegated call to Chart
-    this.addChart(where);
+basicDonut.build = function(data, prop) {
+    //delegate to basicDonut
+    this.setup(data, prop)
 
+    // delegate to Chart
+    this.addChart();
+
+
+    // d3 script specifc to kind of chart (e.g. donut, bar, etc)
     var chartBox = this.chartBox,
         width = this.width,
         height = this.height,
@@ -282,6 +306,7 @@ basicDonut.build = function(where) {
             return color(d.data.label);
         });
 
+    // delegate to Chart object
     this.createCTA();
     this.createLegend();
     this.circleText();
@@ -293,6 +318,7 @@ basicDonut.build = function(where) {
 
 
 (function(){
+    // this represents an aggregate of all transaction category amounts
     var dataset = [
       {
         "cashback": 51.02,
@@ -306,18 +332,16 @@ basicDonut.build = function(where) {
       }
     ];
 
+    // choose kind of chart (e.g. donut, bar, etc)
     var chart1 = Object.create(basicDonut);
 
-    // chart1.MakeItAll({
-    //     "dataset": dataset,
-    //     "chartType": dataIn,
-    //     "containerName": "#moniesId"
-    // })
-
+    // will integrate once data manipulation method is set
     chart1.refineData(dataset);
 
-    chart1.setup(chart1.dataIn, "moneyIn");
-
-    chart1.build("#moniesId");
+    // each kind of chart will have its own setup and build methods
+    chart1.build(chart1.dataIn, {
+        whichChart: "moneyIn", // options: moneyIn, moneyOut
+        where: "#moniesId" // class or ID where you want to insert chart
+    });
 
 }());
